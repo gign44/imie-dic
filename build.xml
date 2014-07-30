@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Imie-Dic" default="build">
+<target name="build" depends="prepare,lint" />
+
+<target name="prepare" depends="clean">
+  <mkdir dir="${basedir}/build/api" />
+  <mkdir dir="${basedir}/build/logs" />
+  <mkdir dir="${basedir}/build/coverage" />
+  <mkdir dir="${basedir}/build/pdepend" />
+</target>
+
+<target name="clean" description="Etape de suppression">
+  <delete dir="${basedir}/build/api" />
+  <delete dir="${basedir}/build/logs" />
+  <delete dir="${basedir}/build/coverage" />
+  <delete dir="${basedir}/build/pdepend" />
+</target>
+
+<target name="lint">
+  <fileset dir="${basedir}/src">
+    <include name="**/*.pĥp" />
+  </fileset>
+  <fileset dir="${basedir}/tests">
+    <include name="**/*.pĥp" />    
+  </fileset>
+</target>
