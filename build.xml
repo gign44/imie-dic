@@ -23,6 +23,9 @@
     <fileset dir="${basedir}/tests">
       <include name="**/*.pĥp" />    
     </fileset>
+    <exec executable="phploc">
+      <arg value="-l" />
+    </exec>
   </target>
 
 <target name="phploc" description="Measure project size using PHPLOC">
