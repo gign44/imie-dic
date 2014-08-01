@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Imie-Dic" default="build">
-  <target name="build" depends="prepare,lint, phploc, pdepend, phpcpd" />
+  <target name="build" depends="prepare,lint, phploc, pdepend, phpcpd, phpunit" />
 
   <target name="prepare" depends="clean">
     <mkdir dir="${basedir}/build/api" />
@@ -33,10 +33,10 @@
         <arg value="--log-csv"/>
         <arg value="${basedir}/build/logs/phploc.csv"/>
         <arg value="--exclude"/>
-        <arg value="${src}/api/"/>
+        <arg value="${basedir}/api/"/>
         <arg value="--exclude"/>
-        <arg value="${src}/external/"/>
-        <arg path="${src}"/>
+        <arg value="${basedir}/external/"/>
+        <arg path="${basedir}"/>
     </exec>
 </target>
 
@@ -47,7 +47,7 @@
         <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg"/>
         <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg"/>
         <arg value="--ignore=/dir/one/,/dir/two/"/>
-        <arg path="${src}"/>
+        <arg path="${basedir}"/>
     </exec>
 </target>
 
@@ -56,10 +56,13 @@
         <arg value="--log-pmd"/>
         <arg value="${basedir}/build/logs/pmd-cpd.xml"/>
         <arg value="--exclude"/>
-        <arg value="${src}/api/"/>
+        <arg value="${basedir}/api/"/>
         <arg value="--exclude"/>
-        <arg value="${src}/exclude/"/><arg path="${src}"/>
+        <arg value="${basedir}/exclude/"/><arg path="${basedir}"/>
     </exec>
 </target>
 
+<target name="phpunit" description="Execution de phpunit">
+    <exec executable="phpunit"></exec>
+</target>
 </project>
