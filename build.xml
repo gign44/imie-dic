@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Imie-Dic" default="build">
-  <target name="build" depends="prepare,lint, phploc, pdepend, phpcpd, phpunit" />
+  <target name="build" depends="prepare,lint, phploc, pdepend, phpcpd, phpunit,phpcs" />
 
   <target name="prepare" depends="clean">
     <mkdir dir="${basedir}/build/api" />
@@ -65,4 +65,9 @@
 <target name="phpunit" description="Execution de phpunit">
     <exec executable="phpunit"></exec>
 </target>
+
+<target bame="phpcs">
+  <exec executable="phpcs"></exec>
+</target>
+
 </project>
